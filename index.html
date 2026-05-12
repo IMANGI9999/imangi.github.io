@@ -3,417 +3,545 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IMANGI MODE</title>
+<title>MODZ HUB – Best MOD Apps & Games</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
+  :root {
+    --pink: #f72585;
+    --purple: #7209b7;
+    --violet: #560bad;
+    --blue: #480ca8;
+    --cyan: #4cc9f0;
+    --orange: #fb5607;
+    --yellow: #ffbe0b;
+    --bg: #0d0d1a;
+    --card: #13132a;
+    --card2: #1a1a35;
+    --text: #f0f0ff;
+    --muted: #9999cc;
+    --border: rgba(247,37,133,0.18);
+  }
 
-body {
-  background: #f5f5f7;
-  color: #1d1d1f;
-}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Header */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-  background: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  border-bottom: 1px solid #e5e5e5;
-}
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
 
-.logo {
-  font-size: 32px;
-  font-weight: 800;
-  background: linear-gradient(135deg, #c259f5, #f259a8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+  /* Animated BG mesh */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 20% 20%, rgba(114,9,183,0.25) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 50% at 80% 10%, rgba(247,37,133,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 50% at 60% 80%, rgba(76,201,240,0.10) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
 
-.header-icons {
-  display: flex;
-  gap: 20px;
-  font-size: 22px;
-}
+  /* ── NAVBAR ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    background: rgba(13,13,26,0.85);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+  }
 
-/* Category Section */
-.category-box {
-  background: #fff;
-  margin: 12px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
+  .logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--pink), var(--cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+  }
 
-.category-title {
-  padding: 16px 20px;
-  font-size: 18px;
-  font-weight: 600;
-}
+  .nav-links {
+    display: flex;
+    gap: 8px;
+  }
 
-.category-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 20px;
-  border-top: 1px solid #f0f0f0;
-  font-size: 16px;
-  color: #333;
-  text-decoration: none;
-}
+  .nav-links a {
+    text-decoration: none;
+    padding: 7px 16px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--muted);
+    transition: all .2s;
+    cursor: pointer;
+  }
 
-.category-item:active {
-  background: #f8f8f8;
-}
+  .nav-links a:hover,
+  .nav-links a.active {
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    color: #fff;
+    transform: translateY(-1px);
+  }
 
-.arrow {
-  color: #c7c7cc;
-  font-size: 18px;
-}
+  /* ── SEARCH ── */
+  .search-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    margin: 40px auto 10px;
+    padding: 0 20px;
+  }
 
-/* App List */
-.app-container {
-  padding: 8px 12px 100px;
-}
+  .search-wrap input {
+    width: 100%;
+    padding: 16px 56px 16px 22px;
+    border-radius: 50px;
+    border: 2px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    font-size: 15px;
+    font-family: 'Nunito', sans-serif;
+    outline: none;
+    transition: border-color .3s, box-shadow .3s;
+  }
 
-.app-card {
-  background: #fff;
-  border-radius: 14px;
-  padding: 12px;
-  margin-bottom: 10px;
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-  cursor: pointer;
-}
+  .search-wrap input:focus {
+    border-color: var(--pink);
+    box-shadow: 0 0 20px rgba(247,37,133,0.25);
+  }
 
-.app-card:active {
-  background: #fafafa;
-}
+  .search-wrap input::placeholder { color: var(--muted); }
 
-.app-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
-  object-fit: cover;
-  position: relative;
-}
+  .search-icon {
+    position: absolute;
+    right: 36px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    opacity: .6;
+  }
 
-.mod-badge {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: #ffb400;
-  color: #fff;
-  font-size: 10px;
-  font-weight: 700;
-  padding: 3px 6px;
-  border-radius: 6px 0 6px 0;
-}
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 20px 20px 10px;
+  }
 
-.app-info {
-  flex: 1;
-  min-width: 0;
-}
+  .hero h1 {
+    font-size: clamp(26px, 6vw, 50px);
+    font-weight: 900;
+    line-height: 1.15;
+    background: linear-gradient(135deg, #fff 10%, var(--pink) 50%, var(--cyan) 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 
-.app-name {
-  font-size: 15px;
-  font-weight: 500;
-  margin-bottom: 6px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+  .hero p {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 15px;
+  }
 
-.app-tags {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
+  /* ── CATEGORY PILLS ── */
+  .categories {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 24px 20px 0;
+  }
 
-.tag {
-  background: #f2f2f7;
-  color: #666;
-  font-size: 12px;
-  padding: 3px 8px;
-  border-radius: 12px;
-}
+  .cat-pill {
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    border: 2px solid transparent;
+    background: var(--card2);
+    color: var(--muted);
+    transition: all .25s;
+    user-select: none;
+  }
 
-.tag-premium {
-  background: #e8e8f0;
-}
+  .cat-pill:hover { border-color: var(--pink); color: var(--pink); }
 
-/* Bottom filter pill */
-.filter-pill {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #fff;
-  padding: 8px 16px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  font-size: 14px;
-  color: #007aff;
-  z-index: 50;
-}
+  .cat-pill.active {
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 4px 18px rgba(247,37,133,0.35);
+  }
 
-/* Modal */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  z-index: 200;
-  justify-content: center;
-  align-items: flex-end;
-}
+  /* ── SECTION TITLE ── */
+  .section-title {
+    position: relative;
+    z-index: 1;
+    font-size: 20px;
+    font-weight: 900;
+    padding: 32px 20px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
-.modal.show {
-  display: flex;
-}
+  .section-title span {
+    display: inline-block;
+    width: 6px;
+    height: 22px;
+    border-radius: 3px;
+    background: linear-gradient(to bottom, var(--pink), var(--cyan));
+  }
 
-.modal-content {
-  background: #fff;
-  width: 100%;
-  max-height: 85%;
-  border-radius: 20px 20px 0 0;
-  padding: 20px;
-  overflow-y: auto;
-  animation: slideUp 0.3s ease;
-}
+  /* ── GRID ── */
+  .grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+    gap: 16px;
+    padding: 0 20px 40px;
+  }
 
-@keyframes slideUp {
-  from { transform: translateY(100%); }
-  to { transform: translateY(0); }
-}
+  /* ── CARD ── */
+  .card {
+    background: var(--card);
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform .25s, box-shadow .25s;
+    animation: fadeUp .5s ease both;
+  }
 
-.modal-header {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 20px;
-}
+  .card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 16px 40px rgba(247,37,133,0.22);
+    border-color: var(--pink);
+  }
 
-.modal-icon {
-  width: 80px;
-  height: 80px;
-  border-radius: 18px;
-  object-fit: cover;
-}
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 
-.modal-title {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 5px;
-}
+  .card-thumb {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    background: var(--card2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 52px;
+  }
 
-.modal-subtitle {
-  font-size: 14px;
-  color: #666;
-}
+  .card-thumb .bg-blur {
+    position: absolute;
+    inset: 0;
+    filter: blur(30px);
+    opacity: .5;
+    background: inherit;
+  }
 
-.download-btn {
-  display: block;
-  width: 100%;
-  padding: 14px;
-  background: #007aff;
-  color: #fff;
-  text-align: center;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  text-decoration: none;
-  margin: 20px 0;
-}
+  .mod-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: linear-gradient(135deg, var(--yellow), var(--orange));
+    color: #000;
+    font-size: 10px;
+    font-weight: 900;
+    padding: 3px 9px;
+    border-radius: 50px;
+    letter-spacing: 1px;
+    z-index: 2;
+  }
 
-.download-btn:active {
-  background: #005bb5;
-}
+  .premium-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 50px;
+    z-index: 2;
+  }
 
-.modal-section {
-  margin-bottom: 20px;
-}
+  .cat-label {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(6px);
+    color: var(--cyan);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 50px;
+    white-space: nowrap;
+    z-index: 2;
+    letter-spacing: .5px;
+  }
 
-.modal-section-title {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
+  .card-body { padding: 12px 12px 14px; }
 
-.modal-text {
-  font-size: 14px;
-  color: #444;
-  line-height: 1.6;
-}
+  .card-name {
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 4px;
+  }
 
-.close-btn {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 28px;
-  color: #999;
-  background: #f2f2f7;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
+  .card-ver {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .dl-btn {
+    display: block;
+    width: 100%;
+    padding: 9px;
+    border-radius: 50px;
+    border: none;
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: opacity .2s, transform .2s;
+    font-family: 'Nunito', sans-serif;
+    letter-spacing: .5px;
+  }
+
+  .dl-btn:hover { opacity: .85; transform: scale(1.03); }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    color: #fff;
+    padding: 13px 28px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 14px;
+    z-index: 999;
+    transition: transform .4s cubic-bezier(.22,1,.36,1);
+    pointer-events: none;
+  }
+
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* FOOTER */
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--muted);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+  }
+
+  footer span {
+    background: linear-gradient(90deg, var(--pink), var(--cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+  }
+
+  /* EMPTY */
+  .empty {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--muted);
+    font-size: 15px;
+    display: none;
+  }
+
+  .empty.show { display: block; }
+
+  /* RESPONSIVE */
+  @media (max-width: 500px) {
+    .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .logo { font-size: 18px; }
+  }
 </style>
 </head>
 <body>
 
-<!-- Header -->
-<div class="header">
-  <div class="logo">IMANGI</div>
-  <div class="header-icons">
-    <span>🔍</span>
-    <span>⋮</span>
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">MODZ HUB</div>
+  <div class="nav-links">
+    <a class="active" onclick="filterCat('all',this)">All</a>
+    <a onclick="filterCat('app',this)">Apps</a>
+    <a onclick="filterCat('game',this)">Games</a>
   </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Download MOD Apps<br>& Games Free</h1>
+  <p>Premium unlocked • Ads removed • Latest versions</p>
 </div>
 
-<!-- Categories -->
-<div class="category-box">
-  <div class="category-title">Discover more</div>
-  <a href="#" class="category-item">Video Games <span class="arrow">›</span></a>
-  <a href="#" class="category-item">Games <span class="arrow">›</span></a>
-  <a href="#" class="category-item">Computers & Electronics <span class="arrow">›</span></a>
-  <a href="#" class="category-item">Mobile Apps & Add-Ons <span class="arrow">›</span></a>
-  <a href="#" class="category-item">Productivity app bundles <span class="arrow">›</span></a>
-  <a href="#" class="category-item">Android <span class="arrow">›</span></a>
+<!-- SEARCH -->
+<div class="search-wrap">
+  <input type="text" id="searchInput" placeholder="Search apps, games..." oninput="doSearch()">
+  <span class="search-icon">🔍</span>
 </div>
 
-<!-- Apps List -->
-<div class="app-container" id="appList"></div>
-
-<!-- Bottom Filter Pill -->
-<div class="filter-pill">
-  ✕ 📄 Games
+<!-- CATEGORIES -->
+<div class="categories" id="catPills">
+  <div class="cat-pill active" onclick="filterLabel('all',this)">🌟 All</div>
+  <div class="cat-pill" onclick="filterLabel('Tools',this)">🔧 Tools</div>
+  <div class="cat-pill" onclick="filterLabel('Education',this)">📚 Education</div>
+  <div class="cat-pill" onclick="filterLabel('Entertainment',this)">🎬 Entertainment</div>
+  <div class="cat-pill" onclick="filterLabel('Action',this)">⚔️ Action</div>
+  <div class="cat-pill" onclick="filterLabel('Casual',this)">🎯 Casual</div>
+  <div class="cat-pill" onclick="filterLabel('RPG',this)">🧙 RPG</div>
 </div>
 
-<!-- Modal -->
-<div class="modal" id="appModal">
-  <div class="modal-content">
-    <div class="close-btn" onclick="closeModal()">×</div>
-    <div class="modal-header">
-      <img id="modalIcon" class="modal-icon" src="">
-      <div>
-        <div class="modal-title" id="modalTitle"></div>
-        <div class="modal-subtitle" id="modalSubtitle"></div>
-      </div>
-    </div>
-    <a id="modalDownload" class="download-btn" href="#" target="_blank">Download APK</a>
-    <div class="modal-section">
-      <div class="modal-section-title">About</div>
-      <div class="modal-text" id="modalDesc"></div>
-    </div>
-  </div>
+<!-- GRID -->
+<div class="section-title" id="sectionTitle">
+  <span></span> All Items
 </div>
+<div class="grid" id="mainGrid"></div>
+<div class="empty" id="emptyMsg">😔 No results found. Try another search!</div>
+
+<footer>
+  Made with ❤️ by <span>MODZ HUB</span> &nbsp;|&nbsp; All MODs tested & safe
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✅ Download Started!</div>
 
 <script>
-// App Data - Yaha se app add/edit karo
-const apps = [
-  {
-    name: "BoldVoice – Trucaller v3.9.2",
-    category: "Education",
-    version: "v3.9.2",
-    size: "140 MB",
-    icon: "https://via.placeholder.com/80/f43f5e/fff?text=B",
-    .apk",
-    desc: "Improve your English accent with AI-powered speech training. Unlock premium features with MOD version."
-  },
-  {
-    name: "eEagle VPN Secure Proxy Master v2.1.5",
-    category: "Tools", 
-    version: "v2.1.5",
-    size: "32 MB",
-    icon: "https://via.placeholder.com/80/0ea5e9/fff?text=V",
-    download: "https://t.me/imangi996.apk",
-    desc: "Fast and secure VPN with unlimited bandwidth. No ads in MOD version."
-  },
-  {
-    name: "EWA: Learn English & Spanish v4.8.1",
-    category: "Education",
-    version: "v4.8.1", 
-    size: "120 MB",
-    icon: "https://via.placeholder.com/80/f97316/fff?text=E",
-    download: "https://your-download-link.com/ewa.apk",
-    desc: "Learn languages through movies and books. Premium content unlocked."
-  },
-  {
-    name: "Fabula: Audiobook Summaries v1.5.0",
-    category: "Books & Reference",
-    version: "v1.5.0",
-    size: "28 MB", 
-    icon: "https://via.placeholder.com/80/10b981/fff?text=F",
-    download: "https://your-download-link.com/fabula.apk",
-    desc: "Get key insights from best-selling audiobooks in 15 minutes."
-  }
+const DATA = [
+  // APPS
+  { name:"Spotify MOD", ver:"v8.9.12", icon:"🎵", cat:"Entertainment", type:"app", mod:true, premium:true, color:"#1db954" },
+  { name:"YouTube Premium", ver:"v19.14", icon:"▶️", cat:"Entertainment", type:"app", mod:true, premium:true, color:"#ff0000" },
+  { name:"Netflix MOD", ver:"v8.64.0", icon:"🎬", cat:"Entertainment", type:"app", mod:true, premium:true, color:"#e50914" },
+  { name:"VPN Master Pro", ver:"v4.3.1", icon:"🛡️", cat:"Tools", type:"app", mod:true, premium:true, color:"#3a86ff" },
+  { name:"Duolingo Plus", ver:"v5.156", icon:"🦉", cat:"Education", type:"app", mod:true, premium:true, color:"#58cc02" },
+  { name:"Canva Pro", ver:"v2.235", icon:"🎨", cat:"Tools", type:"app", mod:true, premium:true, color:"#a259ff" },
+  { name:"Grammarly Premium", ver:"v3.12.4", icon:"✍️", cat:"Education", type:"app", mod:true, premium:true, color:"#15c39a" },
+  { name:"Headspace MOD", ver:"v4.218", icon:"🧘", cat:"Tools", type:"app", mod:true, premium:true, color:"#ff6b6b" },
+  // GAMES
+  { name:"PUBG Mobile", ver:"v3.2.0", icon:"🎮", cat:"Action", type:"game", mod:true, premium:false, color:"#f5a623" },
+  { name:"Subway Surfers", ver:"v3.26.1", icon:"🏃", cat:"Casual", type:"game", mod:true, premium:false, color:"#ff6b35" },
+  { name:"Minecraft MOD", ver:"v1.21.50", icon:"⛏️", cat:"Casual", type:"game", mod:true, premium:true, color:"#8b5e3c" },
+  { name:"Genshin Impact", ver:"v4.6.0", icon:"⚡", cat:"RPG", type:"game", mod:false, premium:false, color:"#7bc8f6" },
+  { name:"Free Fire MAX", ver:"v2.106.1", icon:"🔥", cat:"Action", type:"game", mod:true, premium:false, color:"#ff4400" },
+  { name:"Clash of Clans", ver:"v16.386", icon:"🏰", cat:"Casual", type:"game", mod:true, premium:false, color:"#f7b731" },
+  { name:"Dragon Ball Legends", ver:"v5.22.0", icon:"🐉", cat:"RPG", type:"game", mod:true, premium:true, color:"#ff9f43" },
+  { name:"Stumble Guys MOD", ver:"v0.67.2", icon:"🤪", cat:"Casual", type:"game", mod:true, premium:true, color:"#fd79a8" },
 ];
 
-// Render Apps
-function renderApps() {
-  const appList = document.getElementById('appList');
-  appList.innerHTML = apps.map((app, index) => `
-    <div class="app-card" onclick="openModal(${index})">
-      <div style="position:relative;">
-        <img src="${app.icon}" class="app-icon">
-        <div class="mod-badge">MOD</div>
+let activeType = 'all';
+let activeCat  = 'all';
+let searchQ    = '';
+
+function renderGrid() {
+  const grid = document.getElementById('mainGrid');
+  const empty = document.getElementById('emptyMsg');
+  const title = document.getElementById('sectionTitle');
+  grid.innerHTML = '';
+
+  let items = DATA.filter(d => {
+    const typeOk = activeType === 'all' || d.type === activeType;
+    const catOk  = activeCat === 'all' || d.cat === activeCat;
+    const searchOk = d.name.toLowerCase().includes(searchQ);
+    return typeOk && catOk && searchOk;
+  });
+
+  if (items.length === 0) {
+    empty.classList.add('show');
+    title.style.display = 'none';
+  } else {
+    empty.classList.remove('show');
+    title.style.display = 'flex';
+    title.innerHTML = `<span></span> ${items.length} Results`;
+  }
+
+  items.forEach((d, i) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.animationDelay = (i * 60) + 'ms';
+    card.innerHTML = `
+      <div class="card-thumb" style="background:${d.color}22">
+        <div class="bg-blur" style="background:${d.color}"></div>
+        ${d.mod ? '<div class="mod-badge">MOD</div>' : ''}
+        ${d.premium ? '<div class="premium-badge">⭐ PRO</div>' : ''}
+        <span style="position:relative;z-index:1;font-size:46px">${d.icon}</span>
+        <div class="cat-label">${d.cat}</div>
       </div>
-      <div class="app-info">
-        <div class="app-name">${app.name}</div>
-        <div class="app-tags">
-          <span class="tag">${app.category}</span>
-          <span class="tag tag-premium">Premium</span>
-          <span class="tag">${app.size}</span>
-        </div>
+      <div class="card-body">
+        <div class="card-name">${d.name}</div>
+        <div class="card-ver">${d.ver}</div>
+        <button class="dl-btn" onclick="download(event,'${d.name}')">⬇ Download</button>
       </div>
-    </div>
-  `).join('');
+    `;
+    grid.appendChild(card);
+  });
 }
 
-// Open Modal
-function openModal(index) {
-  const app = apps[index];
-  document.getElementById('modalIcon').src = app.icon;
-  document.getElementById('modalTitle').textContent = app.name;
-  document.getElementById('modalSubtitle').textContent = `${app.category} • ${app.version} • ${app.size}`;
-  document.getElementById('modalDownload').href = app.download;
-  document.getElementById('modalDesc').textContent = app.desc;
-  document.getElementById('appModal').classList.add('show');
-  document.body.style.overflow = 'hidden';
+function filterCat(type, el) {
+  activeType = type;
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  el.classList.add('active');
+  renderGrid();
 }
 
-// Close Modal
-function closeModal() {
-  document.getElementById('appModal').classList.remove('show');
-  document.body.style.overflow = 'auto';
+function filterLabel(cat, el) {
+  activeCat = cat;
+  document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  renderGrid();
 }
 
-// Close modal on outside click
-document.getElementById('appModal').addEventListener('click', (e) => {
-  if (e.target.id === 'appModal') closeModal();
-});
+function doSearch() {
+  searchQ = document.getElementById('searchInput').value.toLowerCase().trim();
+  renderGrid();
+}
 
-renderApps();
+function download(e, name) {
+  e.stopPropagation();
+  const t = document.getElementById('toast');
+  t.textContent = `⬇ Downloading ${name}...`;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+renderGrid();
 </script>
-
 </body>
-  </html>
+</html>
