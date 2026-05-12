@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> IMANGI MODE – Best MOD Apps & Games</title>
+<title>IMANGI MODE – Best MOD Apps & Games</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -22,7 +22,7 @@
     --border: rgba(247,37,133,0.18);
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     font-family: 'Nunito', sans-serif;
@@ -32,7 +32,6 @@
     overflow-x: hidden;
   }
 
-  /* Animated BG mesh */
   body::before {
     content: '';
     position: fixed;
@@ -45,7 +44,6 @@
     z-index: 0;
   }
 
-  /* ── NAVBAR ── */
   nav {
     position: sticky;
     top: 0;
@@ -92,7 +90,6 @@
     transform: translateY(-1px);
   }
 
-  /* ── SEARCH ── */
   .search-wrap {
     position: relative;
     z-index: 1;
@@ -130,7 +127,6 @@
     opacity: .6;
   }
 
-  /* ── HERO ── */
   .hero {
     position: relative;
     z-index: 1;
@@ -153,7 +149,6 @@
     font-size: 15px;
   }
 
-  /* ── CATEGORY PILLS ── */
   .categories {
     position: relative;
     z-index: 1;
@@ -186,7 +181,6 @@
     box-shadow: 0 4px 18px rgba(247,37,133,0.35);
   }
 
-  /* ── SECTION TITLE ── */
   .section-title {
     position: relative;
     z-index: 1;
@@ -206,7 +200,6 @@
     background: linear-gradient(to bottom, var(--pink), var(--cyan));
   }
 
-  /* ── GRID ── */
   .grid {
     position: relative;
     z-index: 1;
@@ -216,7 +209,6 @@
     padding: 0 20px 40px;
   }
 
-  /* ── CARD ── */
   .card {
     background: var(--card);
     border-radius: 18px;
@@ -338,7 +330,6 @@
 
   .dl-btn:hover { opacity: .85; transform: scale(1.03); }
 
-  /* TOAST */
   .toast {
     position: fixed;
     bottom: 30px;
@@ -357,7 +348,6 @@
 
   .toast.show { transform: translateX(-50%) translateY(0); }
 
-  /* FOOTER */
   footer {
     position: relative;
     z-index: 1;
@@ -375,7 +365,6 @@
     font-weight: 800;
   }
 
-  /* EMPTY */
   .empty {
     position: relative;
     z-index: 1;
@@ -388,7 +377,6 @@
 
   .empty.show { display: block; }
 
-  /* RESPONSIVE */
   @media (max-width: 500px) {
     .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .logo { font-size: 18px; }
@@ -397,9 +385,8 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav>
-  <div class="logo">MODZ HUB</div>
+  <div class="logo">IMANGI MODE</div>
   <div class="nav-links">
     <a class="active" onclick="filterCat('all',this)">All</a>
     <a onclick="filterCat('app',this)">Apps</a>
@@ -407,30 +394,28 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
-  <h1>Download MOD Apps<br>& Games Free</h1>
-  <p>Premium unlocked • Ads removed • Latest versions</p>
+  <h1>18 Premium Apps<br>Free Download</h1>
+  <p>Latest versions • Safe & Tested</p>
 </div>
 
-<!-- SEARCH -->
 <div class="search-wrap">
-  <input type="text" id="searchInput" placeholder="Search apps, games..." oninput="doSearch()">
+  <input type="text" id="searchInput" placeholder="Search apps..." oninput="doSearch()">
   <span class="search-icon">🔍</span>
 </div>
 
-<!-- CATEGORIES -->
 <div class="categories" id="catPills">
   <div class="cat-pill active" onclick="filterLabel('all',this)">🌟 All</div>
+  <div class="cat-pill" onclick="filterLabel('AI Tools',this)">🤖 AI Tools</div>
+  <div class="cat-pill" onclick="filterLabel('Video Editor',this)">🎬 Video Editor</div>
+  <div class="cat-pill" onclick="filterLabel('Entertainment',this)">🎮 Entertainment</div>
+  <div class="cat-pill" onclick="filterLabel('OTT Platform',this)">📺 OTT</div>
   <div class="cat-pill" onclick="filterLabel('Tools',this)">🔧 Tools</div>
-  <div class="cat-pill" onclick="filterLabel('Education',this)">📚 Education</div>
-  <div class="cat-pill" onclick="filterLabel('Entertainment',this)">🎬 Entertainment</div>
-  <div class="cat-pill" onclick="filterLabel('Action',this)">⚔️ Action</div>
-  <div class="cat-pill" onclick="filterLabel('Casual',this)">🎯 Casual</div>
-  <div class="cat-pill" onclick="filterLabel('RPG',this)">🧙 RPG</div>
+  <div class="cat-pill" onclick="filterLabel('Communication',this)">💬 Communication</div>
+  <div class="cat-pill" onclick="filterLabel('VPN',this)">🛡️ VPN</div>
+  <div class="cat-pill" onclick="filterLabel('Photo Editing',this)">📸 Photo</div>
 </div>
 
-<!-- GRID -->
 <div class="section-title" id="sectionTitle">
   <span></span> All Items
 </div>
@@ -438,32 +423,31 @@
 <div class="empty" id="emptyMsg">😔 No results found. Try another search!</div>
 
 <footer>
-  Made with ❤️ by <span>MODZ HUB</span> &nbsp;|&nbsp; All MODs tested & safe
+  Made with ❤️ by <span>IMANGI MODE</span> &nbsp;|&nbsp; All Apps tested & safe
 </footer>
 
-<!-- TOAST -->
 <div class="toast" id="toast">✅ Download Started!</div>
 
 <script>
 const DATA = [
-  // APPS
-  { name:"Spotify MOD", ver:"v8.9.12", icon:"🎵", cat:"Entertainment", type:"app", mod:true, premium:true, color:"#1db954" },
-  { name:"YouTube Premium", ver:"v19.14", icon:"▶️", cat:"Entertainment", type:"app", mod:true, premium:true, color:"#ff0000" },
-  { name:"Netflix MOD", ver:"v8.64.0", icon:"🎬", cat:"Entertainment", type:"app", mod:true, premium:true, color:"#e50914" },
-  { name:"VPN Master Pro", ver:"v4.3.1", icon:"🛡️", cat:"Tools", type:"app", mod:true, premium:true, color:"#3a86ff" },
-  { name:"Duolingo Plus", ver:"v5.156", icon:"🦉", cat:"Education", type:"app", mod:true, premium:true, color:"#58cc02" },
-  { name:"Canva Pro", ver:"v2.235", icon:"🎨", cat:"Tools", type:"app", mod:true, premium:true, color:"#a259ff" },
-  { name:"Grammarly Premium", ver:"v3.12.4", icon:"✍️", cat:"Education", type:"app", mod:true, premium:true, color:"#15c39a" },
-  { name:"Headspace MOD", ver:"v4.218", icon:"🧘", cat:"Tools", type:"app", mod:true, premium:true, color:"#ff6b6b" },
-  // GAMES
-  { name:"PUBG Mobile", ver:"v3.2.0", icon:"🎮", cat:"Action", type:"game", mod:true, premium:false, color:"#f5a623" },
-  { name:"Subway Surfers", ver:"v3.26.1", icon:"🏃", cat:"Casual", type:"game", mod:true, premium:false, color:"#ff6b35" },
-  { name:"Minecraft MOD", ver:"v1.21.50", icon:"⛏️", cat:"Casual", type:"game", mod:true, premium:true, color:"#8b5e3c" },
-  { name:"Genshin Impact", ver:"v4.6.0", icon:"⚡", cat:"RPG", type:"game", mod:false, premium:false, color:"#7bc8f6" },
-  { name:"Free Fire MAX", ver:"v2.106.1", icon:"🔥", cat:"Action", type:"game", mod:true, premium:false, color:"#ff4400" },
-  { name:"Clash of Clans", ver:"v16.386", icon:"🏰", cat:"Casual", type:"game", mod:true, premium:false, color:"#f7b731" },
-  { name:"Dragon Ball Legends", ver:"v5.22.0", icon:"🐉", cat:"RPG", type:"game", mod:true, premium:true, color:"#ff9f43" },
-  { name:"Stumble Guys MOD", ver:"v0.67.2", icon:"🤪", cat:"Casual", type:"game", mod:true, premium:true, color:"#fd79a8" },
+  { name:"Free Reel", ver:"v1.0", icon:"🎬", cat:"Video Editor", type:"app", mod:false, premium:false, color:"#00b894", url:"https://t.me/imangi996/669" },
+  { name:"Claude AI", ver:"v1.0", icon:"🤖", cat:"AI Tools", type:"app", mod:false, premium:false, color:"#00d2d3", url:"https://t.me/imangi996/656" },
+  { name:"YouTube", ver:"v1.0", icon:"▶️", cat:"Entertainment", type:"app", mod:false, premium:false, color:"#ff0000", url:"https://t.me/imangi996/653" },
+  { name:"Vidmate", ver:"v1.0", icon:"⬇️", cat:"Tools", type:"app", mod:false, premium:false, color:"#fdcb6e", url:"https://t.me/imangi996/652" },
+  { name:"Alight Motion", ver:"v1.0", icon:"🎨", cat:"Video Editor", type:"app", mod:false, premium:false, color:"#e84393", url:"https://t.me/imangi996/651" },
+  { name:"Movie Box", ver:"v1.0", icon:"🎥", cat:"Entertainment", type:"app", mod:false, premium:false, color:"#0984e3", url:"https://t.me/imangi996/648" },
+  { name:"Capcut without VPN", ver:"v1.0", icon:"✂️", cat:"Video Editor", type:"app", mod:false, premium:false, color:"#00b894", url:"https://t.me/imangi996/646" },
+  { name:"Specialeffect", ver:"v1.0", icon:"✨", cat:"Video Editor", type:"app", mod:false, premium:false, color:"#fd79a8", url:"https://t.me/imangi996/645" },
+  { name:"Virbo AI Pro", ver:"v1.0", icon:"🎭", cat:"AI Tools", type:"app", mod:false, premium:false, color:"#a29bfe", url:"https://t.me/imangi996/644" },
+  { name:"Subcap AI", ver:"v1.0", icon:"📝", cat:"AI Tools", type:"app", mod:false, premium:false, color:"#55a3ff", url:"https://t.me/imangi996/642" },
+  { name:"Hypic AI", ver:"v1.0", icon:"🖼️", cat:"AI Tools", type:"app", mod:false, premium:false, color:"#a8ff3e", url:"https://t.me/imangi996/643" },
+  { name:"Melolo", ver:"v1.0", icon:"🎵", cat:"Music", type:"app", mod:false, premium:false, color:"#ffd000", url:"https://t.me/imangi996/627" },
+  { name:"Panda VPN", ver:"v1.0", icon:"🐼", cat:"VPN", type:"app", mod:false, premium:false, color:"#2ed573", url:"https://t.me/imangi996/595" },
+  { name:"DramaBox", ver:"v1.0", icon:"📺", cat:"OTT Platform", type:"app", mod:false, premium:false, color:"#ff4757", url:"https://t.me/imangi996/587" },
+  { name:"HotminiDrama", ver:"v1.0", icon:"🔥", cat:"OTT Platform", type:"app", mod:false, premium:false, color:"#ff7675", url:"https://t.me/imangi996/573" },
+  { name:"Trucaller", ver:"v1.0", icon:"📞", cat:"Communication", type:"app", mod:false, premium:false, color:"#0984e3", url:"https://t.me/imangi996/580" },
+  { name:"Picsart", ver:"v1.0", icon:"📸", cat:"Photo Editing", type:"app", mod:false, premium:false, color:"#6c5ce7", url:"https://t.me/imangi996/518" },
+  { name:"Utool AI", ver:"v1.0", icon:"🛠️", cat:"AI Tools", type:"app", mod:false, premium:false, color:"#00cec9", url:"https://t.me/imangi996/521" }
 ];
 
 let activeType = 'all';
@@ -499,15 +483,13 @@ function renderGrid() {
     card.innerHTML = `
       <div class="card-thumb" style="background:${d.color}22">
         <div class="bg-blur" style="background:${d.color}"></div>
-        ${d.mod ? '<div class="mod-badge">MOD</div>' : ''}
-        ${d.premium ? '<div class="premium-badge">⭐ PRO</div>' : ''}
         <span style="position:relative;z-index:1;font-size:46px">${d.icon}</span>
         <div class="cat-label">${d.cat}</div>
       </div>
       <div class="card-body">
         <div class="card-name">${d.name}</div>
         <div class="card-ver">${d.ver}</div>
-        <button class="dl-btn" onclick="download(event,'${d.name}')">⬇ Download</button>
+        <button class="dl-btn" onclick="download(event,'${d.name}','${d.url}')">⬇ Download</button>
       </div>
     `;
     grid.appendChild(card);
@@ -533,10 +515,15 @@ function doSearch() {
   renderGrid();
 }
 
-function download(e, name) {
+function download(e, name, url) {
   e.stopPropagation();
   const t = document.getElementById('toast');
-  t.textContent = `⬇ Downloading ${name}...`;
+  if (url && url !== 'https://example.com/' && !url.includes('example.com')) {
+    window.open(url, '_blank');
+    t.textContent = `✅ Download shuru ho gaya!`;
+  } else {
+    t.textContent = `⚠️ Download link abhi add nahi hua!`;
+  }
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2800);
 }
@@ -544,4 +531,4 @@ function download(e, name) {
 renderGrid();
 </script>
 </body>
-</html>
+  </html>
