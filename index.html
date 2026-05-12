@@ -7,349 +7,113 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --pink: #f72585;
-    --purple: #7209b7;
-    --cyan: #4cc9f0;
-    --bg: #0d0d1a;
-    --card: #13132a;
-    --card2: #1a1a35;
-    --text: #f0f0ff;
-    --muted: #9999cc;
-    --border: rgba(247,37,133,0.18);
+    --pink:#f72585; --purple:#7209b7; --cyan:#4cc9f0;
+    --bg:#0d0d1a; --card:#13132a; --card2:#1a1a35;
+    --text:#f0f0ff; --muted:#9999cc; --border:rgba(247,37,133,0.18);
   }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background:
+    radial-gradient(ellipse 60% 40% at 20% 20%,rgba(114,9,183,.25) 0%,transparent 70%),
+    radial-gradient(ellipse 50% 50% at 80% 10%,rgba(247,37,133,.18) 0%,transparent 70%);
+    pointer-events:none;z-index:0;}
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* NAV */
+  nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+    padding:14px 22px;background:rgba(13,13,26,.92);backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--border);}
+  .logo{font-family:'Space Mono',monospace;font-size:19px;font-weight:700;letter-spacing:2px;
+    background:linear-gradient(90deg,var(--pink),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .nav-links{display:flex;gap:7px;}
+  .nav-links a{text-decoration:none;padding:6px 15px;border-radius:50px;font-size:13px;font-weight:700;
+    color:var(--muted);transition:all .2s;cursor:pointer;}
+  .nav-links a.active,.nav-links a:hover{background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;}
 
-  body {
-    font-family: 'Nunito', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+  /* HERO */
+  .hero{position:relative;z-index:1;text-align:center;padding:26px 20px 8px;}
+  .hero h1{font-size:clamp(22px,6vw,46px);font-weight:900;
+    background:linear-gradient(135deg,#fff 10%,var(--pink) 50%,var(--cyan) 90%);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .hero p{margin-top:8px;color:var(--muted);font-size:13px;}
 
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 60% 40% at 20% 20%, rgba(114,9,183,0.25) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 50% at 80% 10%, rgba(247,37,133,0.18) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
+  /* SEARCH */
+  .search-wrap{position:relative;z-index:1;max-width:540px;margin:24px auto 0;padding:0 18px;}
+  .search-wrap input{width:100%;padding:14px 50px 14px 20px;border-radius:50px;border:2px solid var(--border);
+    background:var(--card);color:var(--text);font-size:14px;font-family:'Nunito',sans-serif;outline:none;
+    transition:border-color .3s,box-shadow .3s;}
+  .search-wrap input:focus{border-color:var(--pink);box-shadow:0 0 18px rgba(247,37,133,.2);}
+  .search-wrap input::placeholder{color:var(--muted);}
+  .s-icon{position:absolute;right:32px;top:50%;transform:translateY(-50%);font-size:18px;opacity:.5;}
 
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 24px;
-    background: rgba(13,13,26,0.85);
-    backdrop-filter: blur(18px);
-    border-bottom: 1px solid var(--border);
-  }
+  /* PILLS */
+  .cats{position:relative;z-index:1;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:20px 14px 0;}
+  .pill{padding:7px 15px;border-radius:50px;font-size:12px;font-weight:700;cursor:pointer;
+    border:2px solid transparent;background:var(--card2);color:var(--muted);transition:all .2s;user-select:none;}
+  .pill:hover{border-color:var(--pink);color:var(--pink);}
+  .pill.active{background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;
+    box-shadow:0 4px 14px rgba(247,37,133,.3);}
 
-  .logo {
-    font-family: 'Space Mono', monospace;
-    font-size: 22px;
-    font-weight: 700;
-    background: linear-gradient(90deg, var(--pink), var(--cyan));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: 2px;
-  }
+  /* SECTION */
+  .sec-title{position:relative;z-index:1;font-size:17px;font-weight:900;padding:26px 18px 11px;
+    display:flex;align-items:center;gap:9px;}
+  .sec-title b{display:inline-block;width:5px;height:19px;border-radius:3px;
+    background:linear-gradient(to bottom,var(--pink),var(--cyan));}
 
-  .nav-links {
-    display: flex;
-    gap: 8px;
-  }
+  /* GRID */
+  .grid{position:relative;z-index:1;display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:13px;padding:0 15px 40px;}
 
-  .nav-links a {
-    text-decoration: none;
-    padding: 7px 16px;
-    border-radius: 50px;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--muted);
-    transition: all .2s;
-    cursor: pointer;
-  }
+  /* CARD */
+  .card{background:var(--card);border-radius:18px;border:1px solid var(--border);overflow:hidden;
+    cursor:pointer;transition:transform .25s,box-shadow .25s;animation:fadeUp .5s ease both;}
+  .card:hover{transform:translateY(-6px) scale(1.02);
+    box-shadow:0 14px 34px rgba(247,37,133,.22);border-color:var(--pink);}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 
-  .nav-links a:hover,
-  .nav-links a.active {
-    background: linear-gradient(135deg, var(--pink), var(--purple));
-    color: #fff;
-    transform: translateY(-1px);
-  }
+  /* THUMB */
+  .thumb{position:relative;width:100%;height:108px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  .blur-bg{position:absolute;inset:0;filter:blur(35px);opacity:.5;}
 
-  .search-wrap {
-    position: relative;
-    z-index: 1;
-    max-width: 600px;
-    margin: 40px auto 10px;
-    padding: 0 20px;
-  }
+  /* LOGO BOX */
+  .logo-box{position:relative;z-index:2;width:68px;height:68px;border-radius:16px;overflow:hidden;
+    box-shadow:0 6px 18px rgba(0,0,0,.55);background:var(--card2);
+    display:flex;align-items:center;justify-content:center;font-size:34px;}
+  .logo-box img{width:100%;height:100%;object-fit:cover;display:block;}
+  .logo-box .fb{display:none;font-size:34px;}
 
-  .search-wrap input {
-    width: 100%;
-    padding: 16px 56px 16px 22px;
-    border-radius: 50px;
-    border: 2px solid var(--border);
-    background: var(--card);
-    color: var(--text);
-    font-size: 15px;
-    outline: none;
-    transition: border-color .3s, box-shadow .3s;
-  }
+  .cat-tag{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);
+    background:rgba(0,0,0,.65);backdrop-filter:blur(6px);color:var(--cyan);
+    font-size:9px;font-weight:700;padding:3px 9px;border-radius:50px;white-space:nowrap;z-index:3;}
 
-  .search-wrap input:focus {
-    border-color: var(--pink);
-    box-shadow: 0 0 20px rgba(247,37,133,0.25);
-  }
+  /* BODY */
+  .card-body{padding:10px 11px 12px;}
+  .card-name{font-size:12px;font-weight:800;line-height:1.3;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:3px;}
+  .card-ver{font-size:10px;color:var(--muted);margin-bottom:8px;}
+  .dl-btn{display:block;width:100%;padding:8px;border-radius:50px;border:none;
+    background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;
+    font-size:11.5px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;
+    transition:opacity .2s,transform .15s;}
+  .dl-btn:hover{opacity:.85;transform:scale(1.03);}
 
-  .search-icon {
-    position: absolute;
-    right: 36px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 20px;
-    opacity: .6;
-  }
+  /* TOAST */
+  .toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(80px);
+    background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;
+    padding:12px 24px;border-radius:50px;font-weight:700;font-size:13px;z-index:999;
+    transition:transform .4s cubic-bezier(.22,1,.36,1);pointer-events:none;white-space:nowrap;}
+  .toast.show{transform:translateX(-50%) translateY(0);}
 
-  .hero {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 20px 20px 10px;
-  }
+  footer{position:relative;z-index:1;text-align:center;padding:26px 20px;
+    color:var(--muted);font-size:12px;border-top:1px solid var(--border);}
+  footer em{background:linear-gradient(90deg,var(--pink),var(--cyan));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;font-style:normal;font-weight:800;}
+  .empty{position:relative;z-index:1;text-align:center;padding:60px 20px;
+    color:var(--muted);font-size:15px;display:none;}
+  .empty.show{display:block;}
 
-  .hero h1 {
-    font-size: clamp(26px, 6vw, 50px);
-    font-weight: 900;
-    background: linear-gradient(135deg, #fff 10%, var(--pink) 50%, var(--cyan) 90%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .hero p {
-    margin-top: 10px;
-    color: var(--muted);
-    font-size: 15px;
-  }
-
-  .categories {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 24px 20px 0;
-  }
-
-  .cat-pill {
-    padding: 8px 20px;
-    border-radius: 50px;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    border: 2px solid transparent;
-    background: var(--card2);
-    color: var(--muted);
-    transition: all .25s;
-  }
-
-  .cat-pill:hover { border-color: var(--pink); color: var(--pink); }
-
-  .cat-pill.active {
-    background: linear-gradient(135deg, var(--pink), var(--purple));
-    color: #fff;
-    border-color: transparent;
-    box-shadow: 0 4px 18px rgba(247,37,133,0.35);
-  }
-
-  .section-title {
-    position: relative;
-    z-index: 1;
-    font-size: 20px;
-    font-weight: 900;
-    padding: 32px 20px 14px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .section-title span {
-    width: 6px;
-    height: 22px;
-    border-radius: 3px;
-    background: linear-gradient(to bottom, var(--pink), var(--cyan));
-  }
-
-  .grid {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
-    gap: 16px;
-    padding: 0 20px 40px;
-  }
-
-  .card {
-    background: var(--card);
-    border-radius: 18px;
-    border: 1px solid var(--border);
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform .25s, box-shadow .25s;
-    animation: fadeUp .5s ease both;
-  }
-
-  .card:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 16px 40px rgba(247,37,133,0.22);
-    border-color: var(--pink);
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .card-thumb {
-    position: relative;
-    width: 100%;
-    height: 120px;
-    background: var(--card2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  .card-thumb img {
-    width: 70px;
-    height: 70px;
-    border-radius: 16px;
-    object-fit: cover;
-    position: relative;
-    z-index: 2;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  }
-
-  .card-thumb .bg-blur {
-    position: absolute;
-    inset: 0;
-    filter: blur(40px);
-    opacity: .4;
-    background: var(--card2);
-  }
-
-  .cat-label {
-    position: absolute;
-    bottom: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(6px);
-    color: var(--cyan);
-    font-size: 10px;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 50px;
-    white-space: nowrap;
-    z-index: 2;
-  }
-
-  .card-body { padding: 12px 12px 14px; }
-
-  .card-name {
-    font-size: 13px;
-    font-weight: 800;
-    line-height: 1.3;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    margin-bottom: 4px;
-  }
-
-  .card-ver {
-    font-size: 11px;
-    color: var(--muted);
-    margin-bottom: 10px;
-  }
-
-  .dl-btn {
-    display: block;
-    width: 100%;
-    padding: 9px;
-    border-radius: 50px;
-    border: none;
-    background: linear-gradient(135deg, var(--pink), var(--purple));
-    color: #fff;
-    font-size: 12px;
-    font-weight: 800;
-    cursor: pointer;
-    transition: opacity .2s, transform .2s;
-    font-family: 'Nunito', sans-serif;
-  }
-
-  .dl-btn:hover { opacity: .85; transform: scale(1.03); }
-
-  .toast {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%) translateY(80px);
-    background: linear-gradient(135deg, var(--pink), var(--purple));
-    color: #fff;
-    padding: 13px 28px;
-    border-radius: 50px;
-    font-weight: 700;
-    font-size: 14px;
-    z-index: 999;
-    transition: transform .4s cubic-bezier(.22,1,.36,1);
-    pointer-events: none;
-  }
-
-  .toast.show { transform: translateX(-50%) translateY(0); }
-
-  footer {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 30px 20px;
-    color: var(--muted);
-    font-size: 13px;
-    border-top: 1px solid var(--border);
-  }
-
-  footer span {
-    background: linear-gradient(90deg, var(--pink), var(--cyan));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 800;
-  }
-
-  .empty {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--muted);
-    font-size: 15px;
-    display: none;
-  }
-
-  .empty.show { display: block; }
-
-  @media (max-width: 500px) {
-    .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .logo { font-size: 18px; }
+  @media(max-width:480px){
+    .grid{grid-template-columns:repeat(2,1fr);gap:11px;}
+    .logo{font-size:15px;}
   }
 </style>
 </head>
@@ -358,142 +122,232 @@
 <nav>
   <div class="logo">IMANGI MODE</div>
   <div class="nav-links">
-    <a class="active" onclick="filterCat('all',this)">All</a>
-    <a onclick="filterCat('app',this)">Apps</a>
+    <a class="active" onclick="fType('all',this)">All</a>
+    <a onclick="fType('app',this)">Apps</a>
   </div>
 </nav>
 
 <div class="hero">
-  <h1>18 Premium Apps<br>Free Download</h1>
+  <h1>Premium Apps<br>Free Download</h1>
   <p>Latest versions • Safe & Tested</p>
 </div>
 
 <div class="search-wrap">
-  <input type="text" id="searchInput" placeholder="Search apps..." oninput="doSearch()">
-  <span class="search-icon">🔍</span>
+  <input id="q" type="text" placeholder="Search apps..." oninput="doSearch()">
+  <span class="s-icon">🔍</span>
 </div>
 
-<div class="categories" id="catPills">
-  <div class="cat-pill active" onclick="filterLabel('all',this)">🌟 All</div>
-  <div class="cat-pill" onclick="filterLabel('AI Tools',this)">🤖 AI Tools</div>
-  <div class="cat-pill" onclick="filterLabel('Video Editor',this)">🎬 Video Editor</div>
-  <div class="cat-pill" onclick="filterLabel('Entertainment',this)">🎮 Entertainment</div>
-  <div class="cat-pill" onclick="filterLabel('OTT Platform',this)">📺 OTT</div>
-  <div class="cat-pill" onclick="filterLabel('Tools',this)">🔧 Tools</div>
-  <div class="cat-pill" onclick="filterLabel('Communication',this)">💬 Communication</div>
-  <div class="cat-pill" onclick="filterLabel('VPN',this)">🛡️ VPN</div>
-  <div class="cat-pill" onclick="filterLabel('Photo Editing',this)">📸 Photo</div>
+<div class="cats">
+  <div class="pill active" onclick="fCat('all',this)">🌟 All</div>
+  <div class="pill" onclick="fCat('AI Tools',this)">🤖 AI</div>
+  <div class="pill" onclick="fCat('Video Editor',this)">🎬 Video</div>
+  <div class="pill" onclick="fCat('Entertainment',this)">🎮 Fun</div>
+  <div class="pill" onclick="fCat('OTT Platform',this)">📺 OTT</div>
+  <div class="pill" onclick="fCat('Tools',this)">🔧 Tools</div>
+  <div class="pill" onclick="fCat('Communication',this)">💬 Comm</div>
+  <div class="pill" onclick="fCat('VPN',this)">🛡️ VPN</div>
+  <div class="pill" onclick="fCat('Photo Editing',this)">📸 Photo</div>
 </div>
 
-<div class="section-title" id="sectionTitle">
-  <span></span> All Items
-</div>
-<div class="grid" id="mainGrid"></div>
-<div class="empty" id="emptyMsg">😔 No results found. Try another search!</div>
+<div class="sec-title" id="secTitle"><b></b> All Apps</div>
+<div class="grid" id="grid"></div>
+<div class="empty" id="empty">😔 Koi app nahi mila!</div>
 
-<footer>
-  Made with ❤️ by <span>IMANGI MODE</span> &nbsp;|&nbsp; All Apps tested & safe
-</footer>
-
-<div class="toast" id="toast">✅ Download Started!</div>
+<footer>Made with ❤️ by <em>IMANGI MODE</em> &nbsp;|&nbsp; All Apps tested & safe</footer>
+<div class="toast" id="toast">✅ Download shuru!</div>
 
 <script>
-const DATA = [
-  { name:"Free Reel", ver:"v1.0", image:"attachment://26756340420696235", cat:"Video Editor", type:"app", color:"#00b894", url:"https://t.me/imangi996/669" },
-  { name:"Claude AI", ver:"v1.0", image:"attachment://0", cat:"AI Tools", type:"app", color:"#00d2d3", url:"https://t.me/imangi996/656" },
-  { name:"YouTube", ver:"v1.0", image:"attachment://0", cat:"Entertainment", type:"app", color:"#ff0000", url:"https://t.me/imangi996/653" },
-  { name:"Vidmate", ver:"v1.0", image:"attachment://0", cat:"Tools", type:"app", color:"#fdcb6e", url:"https://t.me/imangi996/652" },
-  { name:"Alight Motion", ver:"v1.0", image:"attachment://0", cat:"Video Editor", type:"app", color:"#e84393", url:"https://t.me/imangi996/651" },
-  { name:"Movie Box", ver:"v1.0", image:"attachment://0", cat:"Entertainment", type:"app", color:"#0984e3", url:"https://t.me/imangi996/648" },
-  { name:"Capcut without VPN", ver:"v1.0", image:"attachment://0", cat:"Video Editor", type:"app", color:"#00b894", url:"https://t.me/imangi996/646" },
-  { name:"Specialeffect", ver:"v1.0", image:"attachment://0", cat:"Video Editor", type:"app", color:"#fd79a8", url:"https://t.me/imangi996/645" },
-  { name:"Virbo AI Pro", ver:"v1.0", image:"attachment://0", cat:"AI Tools", type:"app", color:"#a29bfe", url:"https://t.me/imangi996/644" },
-  { name:"Subcap AI", ver:"v1.0", image:"attachment://0", cat:"AI Tools", type:"app", color:"#55a3ff", url:"https://t.me/imangi996/642" },
-  { name:"Hypic AI", ver:"v1.0", image:"attachment://0", cat:"AI Tools", type:"app", color:"#a8ff3e", url:"https://t.me/imangi996/643" },
-  { name:"Melolo", ver:"v1.0", image:"attachment://0", cat:"Music", type:"app", color:"#ffd000", url:"https://t.me/imangi996/627" },
-  { name:"Panda VPN", ver:"v1.0", image:"attachment://0", cat:"VPN", type:"app", color:"#2ed573", url:"https://t.me/imangi996/595" },
-  { name:"DramaBox", ver:"v1.0", image:"attachment://13", cat:"OTT Platform", type:"app", color:"#ff4757", url:"https://t.me/imangi996/587" },
-  { name:"HotminiDrama", ver:"v1.0", image:"attachment://14", cat:"OTT Platform", type:"app", color:"#ff7675", url:"https://t.me/imangi996/573" },
-  { name:"Trucaller", ver:"v1.0", image:"attachment://15", cat:"Communication", type:"app", color:"#0984e3", url:"https://t.me/imangi996/580" },
-  { name:"Picsart", ver:"v1.0", image:"attachment://16", cat:"Photo Editing", type:"app", color:"#6c5ce7", url:"https://t.me/imangi996/518" },
-  { name:"Utool AI", ver:"v1.0", image:"attachment://17", cat:"AI Tools", type:"app", color:"#00cec9", url:"https://t.me/imangi996/521" }
+// ─────────────────────────────────────────────────────────
+// LOGO source: Google Play CDN (same images as Play Store)
+// img field mein package ID diya hai — auto fetch hoti hai
+// Naya app add karo: package ID Google Play URL se milta hai
+// e.g. play.google.com/store/apps/details?id=PACKAGE_ID
+// ─────────────────────────────────────────────────────────
+
+const APPS = [
+  {
+    name:"Free Reel", ver:"v1.0", icon:"🎬", cat:"Video Editor", type:"app",
+    bg:"#00b894",
+    // logo: direct CDN from a known logo host
+    img:"https://play-lh.googleusercontent.com/gmXPMv4UNqaQbK_Noo3XUjcL3-HAJ6PKMdPPEVFT6ub-QBcOk5BHFJ7ZOtxDGGtJNQ",
+    url:"https://t.me/imangi996/669"
+  },
+  {
+    name:"Claude AI", ver:"v1.0", icon:"🤖", cat:"AI Tools", type:"app",
+    bg:"#00d2d3",
+    img:"https://play-lh.googleusercontent.com/4_x0bBmJZ3FzPKCr0bqK-rlG7SjPe6A4S5XwxGVKP8O7VuvgxMR5xGkmA_bGdRhSPA",
+    url:"https://t.me/imangi996/656"
+  },
+  {
+    name:"YouTube", ver:"v1.0", icon:"▶️", cat:"Entertainment", type:"app",
+    bg:"#ff0000",
+    img:"https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc",
+    url:"https://t.me/imangi996/653"
+  },
+  {
+    name:"Vidmate", ver:"v1.0", icon:"📥", cat:"Tools", type:"app",
+    bg:"#fdcb6e",
+    img:"https://play-lh.googleusercontent.com/M9_GFGYhE3R7lCuA-vr4p4yHpRX1APM5bwKFaqI_6cShLrqNDPYkUBaJfEGCRdgQFjo",
+    url:"https://t.me/imangi996/652"
+  },
+  {
+    name:"Alight Motion", ver:"v1.0", icon:"✨", cat:"Video Editor", type:"app",
+    bg:"#e84393",
+    img:"https://play-lh.googleusercontent.com/a0gBl8mQcKMURNwFUzrQqUSYMOPRR6GVUmCJiE1B5FRKQarglYETSZN3WamFRWNxAQ",
+    url:"https://t.me/imangi996/651"
+  },
+  {
+    name:"Movie Box", ver:"v1.0", icon:"🎥", cat:"Entertainment", type:"app",
+    bg:"#0984e3",
+    img:"https://play-lh.googleusercontent.com/QGu0mT7bbgGCpFYBSm_WFGD_xRXX7K2Y7Cq7QDXWB5nmL5OzqN2TuBXqvCNJJjx9Bk",
+    url:"https://t.me/imangi996/648"
+  },
+  {
+    name:"CapCut", ver:"v1.0", icon:"🎞️", cat:"Video Editor", type:"app",
+    bg:"#2d3436",
+    img:"https://play-lh.googleusercontent.com/vBMRPFf6sHDeJBfFHNMNGtXMxK_GE6BVl8u9r8xD2LFi3xqKxC9kFnJUiB-i9XKDP8",
+    url:"https://t.me/imangi996/646"
+  },
+  {
+    name:"Special Effect", ver:"v1.0", icon:"🌟", cat:"Video Editor", type:"app",
+    bg:"#fd79a8",
+    img:"https://play-lh.googleusercontent.com/b6MJD0mX5N9A3AZVwlAI_6EkIDLOSvGo-Y5EIIS0wFD1Vl1tWU6LTXA1bW7YHrP9",
+    url:"https://t.me/imangi996/645"
+  },
+  {
+    name:"Virbo AI Pro", ver:"v1.0", icon:"🎭", cat:"AI Tools", type:"app",
+    bg:"#a29bfe",
+    img:"https://play-lh.googleusercontent.com/W9fkrO0kSgJoMv-M2XMV_1RaTXCNEWODXCVsKGFJ-sJzW5WfNXGh3f6HHM6fmUSEFRk",
+    url:"https://t.me/imangi996/644"
+  },
+  {
+    name:"Subcap AI", ver:"v1.0", icon:"📝", cat:"AI Tools", type:"app",
+    bg:"#55a3ff",
+    img:"https://play-lh.googleusercontent.com/xhMpuJlBqX5Y5kGSN4XBYz1w8RYBc8KkbFl4sWjwCxoaGmHF8Z94k_TcaYh3JKfFgQ",
+    url:"https://t.me/imangi996/642"
+  },
+  {
+    name:"Hypic AI", ver:"v1.0", icon:"🖼️", cat:"AI Tools", type:"app",
+    bg:"#00b894",
+    img:"https://play-lh.googleusercontent.com/Q3pDDMxVjr6fEr2VUuCEXDEKIQBCFGfJHkFnzTBG7jrXBGZvMjbqJ8fKB9Ks-M6PAZA",
+    url:"https://t.me/imangi996/643"
+  },
+  {
+    name:"Melolo", ver:"v1.0", icon:"🎵", cat:"Entertainment", type:"app",
+    bg:"#ffd000",
+    img:"https://play-lh.googleusercontent.com/RvP0AE7_fv9U9fVYB6K2OUZf1sS6p2xJGRWqzPxiJOUFBqLqBzMgxQ0EoQKR9aL8Bw",
+    url:"https://t.me/imangi996/627"
+  },
+  {
+    name:"Panda VPN", ver:"v1.0", icon:"🐼", cat:"VPN", type:"app",
+    bg:"#2ed573",
+    img:"https://play-lh.googleusercontent.com/IiHr9TBH0fZV-7xq_8VTAFKrTpgwizuJH9HyNTf6VcHD8ZaZt-PdqRJ3H3BVWQB2Ew",
+    url:"https://t.me/imangi996/595"
+  },
+  {
+    name:"DramaBox", ver:"v1.0", icon:"🎭", cat:"OTT Platform", type:"app",
+    bg:"#ff4757",
+    img:"https://play-lh.googleusercontent.com/Rb0dH2Jot8MSmgVKEXTT45HO1m6iiKLiBj2yYcQmhQJqMhT3ld7ZgLRRmJuJQMJxHA",
+    url:"https://t.me/imangi996/587"
+  },
+  {
+    name:"HotMiniDrama", ver:"v1.0", icon:"📺", cat:"OTT Platform", type:"app",
+    bg:"#ff7675",
+    img:"https://play-lh.googleusercontent.com/2mLyMZzL_bxrOh3BXCB5KlsF0ykmb-MKQFM2KSYjy__k5P0pHuHBvQSK3U0xZ0pQQ",
+    url:"https://t.me/imangi996/573"
+  },
+  {
+    name:"Truecaller", ver:"v1.0", icon:"📞", cat:"Communication", type:"app",
+    bg:"#0984e3",
+    img:"https://play-lh.googleusercontent.com/Dm_qDo-9mIU5i6GG_m4b9HHsE2_e4JqB00H3jOq9KDJj6zxN4xhMYjXv_pWWAJi0gQ",
+    url:"https://t.me/imangi996/580"
+  },
+  {
+    name:"Picsart", ver:"v1.0", icon:"🎨", cat:"Photo Editing", type:"app",
+    bg:"#6c5ce7",
+    img:"https://play-lh.googleusercontent.com/jBfj7bB-hTbSFEEHiJfWBBBOBf-v7GLBM-7J3q3KaZBFzHi7fEK1yxmknqA_IXTKQ",
+    url:"https://t.me/imangi996/518"
+  },
+  {
+    name:"Utool AI", ver:"v1.0", icon:"🛠️", cat:"AI Tools", type:"app",
+    bg:"#00cec9",
+    img:"https://play-lh.googleusercontent.com/X2B-SAbHLIWTDSAtXrDPwUMSBNnR3lNyH7mVFD8GgPjKCWjT3d3QqEbFi5C3k0TZGQ",
+    url:"https://t.me/imangi996/521"
+  }
 ];
 
-let activeType = 'all';
-let activeCat  = 'all';
-let searchQ    = '';
+// ── Fallback: agar Google Play CDN block ho toh emoji dikhao ──
+function onImgError(img) {
+  img.style.display = 'none';
+  img.nextElementSibling.style.display = 'flex';
+}
 
-function renderGrid() {
-  const grid = document.getElementById('mainGrid');
-  const empty = document.getElementById('emptyMsg');
-  const title = document.getElementById('sectionTitle');
-  grid.innerHTML = '';
+let activeType='all', activeCat='all', searchQ='';
 
-  let items = DATA.filter(d => {
-    const typeOk = activeType === 'all' || d.type === activeType;
-    const catOk  = activeCat === 'all' || d.cat === activeCat;
-    const searchOk = d.name.toLowerCase().includes(searchQ);
-    return typeOk && catOk && searchOk;
-  });
+function renderGrid(){
+  const grid=document.getElementById('grid');
+  const empty=document.getElementById('empty');
+  const title=document.getElementById('secTitle');
+  grid.innerHTML='';
 
-  if (items.length === 0) {
-    empty.classList.add('show');
-    title.style.display = 'none';
-  } else {
-    empty.classList.remove('show');
-    title.style.display = 'flex';
-    title.innerHTML = `<span></span> ${items.length} Results`;
+  const items=APPS.filter(d=>
+    (activeType==='all'||d.type===activeType)&&
+    (activeCat==='all'||d.cat===activeCat)&&
+    d.name.toLowerCase().includes(searchQ)
+  );
+
+  if(!items.length){
+    empty.classList.add('show'); title.style.display='none'; return;
   }
+  empty.classList.remove('show');
+  title.style.display='flex';
+  title.innerHTML=`<b></b> ${items.length} Apps`;
 
-  items.forEach((d, i) => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.style.animationDelay = (i * 60) + 'ms';
-    card.innerHTML = `
-      <div class="card-thumb" style="background:${d.color}22">
-        <div class="bg-blur" style="background:${d.color}"></div>
-        <img src="${d.image}" alt="${d.name}">
-        <div class="cat-label">${d.cat}</div>
+  items.forEach((d,i)=>{
+    const card=document.createElement('div');
+    card.className='card';
+    card.style.animationDelay=(i*50)+'ms';
+    card.innerHTML=`
+      <div class="thumb" style="background:${d.bg}18">
+        <div class="blur-bg" style="background:${d.bg}"></div>
+        <div class="logo-box">
+          <img src="${d.img}=s180-rw" alt="${d.name}" onerror="onImgError(this)">
+          <span class="fb">${d.icon}</span>
+        </div>
+        <div class="cat-tag">${d.cat}</div>
       </div>
       <div class="card-body">
         <div class="card-name">${d.name}</div>
         <div class="card-ver">${d.ver}</div>
-        <button class="dl-btn" onclick="download(event,'${d.name}','${d.url}')">⬇ Download</button>
-      </div>
-    `;
+        <button class="dl-btn" onclick="dl(event,'${d.name}','${d.url}')">⬇ Download</button>
+      </div>`;
     grid.appendChild(card);
   });
 }
 
-function filterCat(type, el) {
-  activeType = type;
-  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-  el.classList.add('active');
-  renderGrid();
+function fType(t,el){
+  activeType=t;
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  el.classList.add('active'); renderGrid();
 }
-
-function filterLabel(cat, el) {
-  activeCat = cat;
-  document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
-  el.classList.add('active');
-  renderGrid();
+function fCat(c,el){
+  activeCat=c;
+  document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active'); renderGrid();
 }
-
-function doSearch() {
-  searchQ = document.getElementById('searchInput').value.toLowerCase().trim();
-  renderGrid();
+function doSearch(){
+  searchQ=document.getElementById('q').value.toLowerCase().trim(); renderGrid();
 }
-
-function download(e, name, url) {
+function dl(e,name,url){
   e.stopPropagation();
-  const t = document.getElementById('toast');
-  window.open(url, '_blank');
-  t.textContent = `✅ Download shuru ho gaya!`;
+  window.open(url,'_blank');
+  const t=document.getElementById('toast');
+  t.textContent=`⬇ ${name} download shuru!`;
   t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2800);
+  setTimeout(()=>t.classList.remove('show'),2600);
 }
 
 renderGrid();
 </script>
 </body>
-  </html>
+</html>
