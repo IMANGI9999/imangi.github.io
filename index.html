@@ -3,17 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IMANGI MODE – Best MOD Apps & Games</title>
+<title>IMANGI MODE – Best Apps & Games</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
 <style>
   :root {
     --pink: #f72585;
     --purple: #7209b7;
-    --violet: #560bad;
-    --blue: #480ca8;
     --cyan: #4cc9f0;
-    --orange: #fb5607;
-    --yellow: #ffbe0b;
     --bg: #0d0d1a;
     --card: #13132a;
     --card2: #1a1a35;
@@ -38,8 +34,7 @@
     inset: 0;
     background:
       radial-gradient(ellipse 60% 40% at 20% 20%, rgba(114,9,183,0.25) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 50% at 80% 10%, rgba(247,37,133,0.18) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 50% at 60% 80%, rgba(76,201,240,0.10) 0%, transparent 70%);
+      radial-gradient(ellipse 50% 50% at 80% 10%, rgba(247,37,133,0.18) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
   }
@@ -106,7 +101,6 @@
     background: var(--card);
     color: var(--text);
     font-size: 15px;
-    font-family: 'Nunito', sans-serif;
     outline: none;
     transition: border-color .3s, box-shadow .3s;
   }
@@ -115,8 +109,6 @@
     border-color: var(--pink);
     box-shadow: 0 0 20px rgba(247,37,133,0.25);
   }
-
-  .search-wrap input::placeholder { color: var(--muted); }
 
   .search-icon {
     position: absolute;
@@ -137,7 +129,6 @@
   .hero h1 {
     font-size: clamp(26px, 6vw, 50px);
     font-weight: 900;
-    line-height: 1.15;
     background: linear-gradient(135deg, #fff 10%, var(--pink) 50%, var(--cyan) 90%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -169,7 +160,6 @@
     background: var(--card2);
     color: var(--muted);
     transition: all .25s;
-    user-select: none;
   }
 
   .cat-pill:hover { border-color: var(--pink); color: var(--pink); }
@@ -193,7 +183,6 @@
   }
 
   .section-title span {
-    display: inline-block;
     width: 6px;
     height: 22px;
     border-radius: 3px;
@@ -227,7 +216,7 @@
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .card-thumb {
@@ -238,42 +227,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 52px;
+    overflow: hidden;
+  }
+
+  .card-thumb img {
+    width: 70px;
+    height: 70px;
+    border-radius: 16px;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
   }
 
   .card-thumb .bg-blur {
     position: absolute;
     inset: 0;
-    filter: blur(30px);
-    opacity: .5;
-    background: inherit;
-  }
-
-  .mod-badge {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    background: linear-gradient(135deg, var(--yellow), var(--orange));
-    color: #000;
-    font-size: 10px;
-    font-weight: 900;
-    padding: 3px 9px;
-    border-radius: 50px;
-    letter-spacing: 1px;
-    z-index: 2;
-  }
-
-  .premium-badge {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background: linear-gradient(135deg, var(--pink), var(--purple));
-    color: #fff;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 3px 9px;
-    border-radius: 50px;
-    z-index: 2;
+    filter: blur(40px);
+    opacity: .4;
+    background: var(--card2);
   }
 
   .cat-label {
@@ -281,7 +253,7 @@
     bottom: 8px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.6);
     backdrop-filter: blur(6px);
     color: var(--cyan);
     font-size: 10px;
@@ -290,7 +262,6 @@
     border-radius: 50px;
     white-space: nowrap;
     z-index: 2;
-    letter-spacing: .5px;
   }
 
   .card-body { padding: 12px 12px 14px; }
@@ -325,7 +296,6 @@
     cursor: pointer;
     transition: opacity .2s, transform .2s;
     font-family: 'Nunito', sans-serif;
-    letter-spacing: .5px;
   }
 
   .dl-btn:hover { opacity: .85; transform: scale(1.03); }
@@ -390,7 +360,6 @@
   <div class="nav-links">
     <a class="active" onclick="filterCat('all',this)">All</a>
     <a onclick="filterCat('app',this)">Apps</a>
-    <a onclick="filterCat('game',this)">Games</a>
   </div>
 </nav>
 
@@ -430,24 +399,24 @@
 
 <script>
 const DATA = [
-  { name:"Free Reel", ver:"v1.0", icon:"🎬", cat:"Video Editor", type:"app", mod:false, premium:false, color:"#00b894", url:"https://t.me/imangi996/669" },
-  { name:"Claude AI", ver:"v1.0", icon:"🤖", cat:"AI Tools", type:"app", mod:false, premium:false, color:"#00d2d3", url:"https://t.me/imangi996/656" },
-  { name:"YouTube", ver:"v1.0", icon:"▶️", cat:"Entertainment", type:"app", mod:false, premium:false, color:"#ff0000", url:"https://t.me/imangi996/653" },
-  { name:"Vidmate", ver:"v1.0", icon:"⬇️", cat:"Tools", type:"app", mod:false, premium:false, color:"#fdcb6e", url:"https://t.me/imangi996/652" },
-  { name:"Alight Motion", ver:"v1.0", icon:"🎨", cat:"Video Editor", type:"app", mod:false, premium:false, color:"#e84393", url:"https://t.me/imangi996/651" },
-  { name:"Movie Box", ver:"v1.0", icon:"🎥", cat:"Entertainment", type:"app", mod:false, premium:false, color:"#0984e3", url:"https://t.me/imangi996/648" },
-  { name:"Capcut without VPN", ver:"v1.0", icon:"✂️", cat:"Video Editor", type:"app", mod:false, premium:false, color:"#00b894", url:"https://t.me/imangi996/646" },
-  { name:"Specialeffect", ver:"v1.0", icon:"✨", cat:"Video Editor", type:"app", mod:false, premium:false, color:"#fd79a8", url:"https://t.me/imangi996/645" },
-  { name:"Virbo AI Pro", ver:"v1.0", icon:"🎭", cat:"AI Tools", type:"app", mod:false, premium:false, color:"#a29bfe", url:"https://t.me/imangi996/644" },
-  { name:"Subcap AI", ver:"v1.0", icon:"📝", cat:"AI Tools", type:"app", mod:false, premium:false, color:"#55a3ff", url:"https://t.me/imangi996/642" },
-  { name:"Hypic AI", ver:"v1.0", icon:"🖼️", cat:"AI Tools", type:"app", mod:false, premium:false, color:"#a8ff3e", url:"https://t.me/imangi996/643" },
-  { name:"Melolo", ver:"v1.0", icon:"🎵", cat:"Music", type:"app", mod:false, premium:false, color:"#ffd000", url:"https://t.me/imangi996/627" },
-  { name:"Panda VPN", ver:"v1.0", icon:"🐼", cat:"VPN", type:"app", mod:false, premium:false, color:"#2ed573", url:"https://t.me/imangi996/595" },
-  { name:"DramaBox", ver:"v1.0", icon:"📺", cat:"OTT Platform", type:"app", mod:false, premium:false, color:"#ff4757", url:"https://t.me/imangi996/587" },
-  { name:"HotminiDrama", ver:"v1.0", icon:"🔥", cat:"OTT Platform", type:"app", mod:false, premium:false, color:"#ff7675", url:"https://t.me/imangi996/573" },
-  { name:"Trucaller", ver:"v1.0", icon:"📞", cat:"Communication", type:"app", mod:false, premium:false, color:"#0984e3", url:"https://t.me/imangi996/580" },
-  { name:"Picsart", ver:"v1.0", icon:"📸", cat:"Photo Editing", type:"app", mod:false, premium:false, color:"#6c5ce7", url:"https://t.me/imangi996/518" },
-  { name:"Utool AI", ver:"v1.0", icon:"🛠️", cat:"AI Tools", type:"app", mod:false, premium:false, color:"#00cec9", url:"https://t.me/imangi996/521" }
+  { name:"Free Reel", ver:"v1.0", image:"attachment://26756340420696235", cat:"Video Editor", type:"app", color:"#00b894", url:"https://t.me/imangi996/669" },
+  { name:"Claude AI", ver:"v1.0", image:"attachment://0", cat:"AI Tools", type:"app", color:"#00d2d3", url:"https://t.me/imangi996/656" },
+  { name:"YouTube", ver:"v1.0", image:"attachment://0", cat:"Entertainment", type:"app", color:"#ff0000", url:"https://t.me/imangi996/653" },
+  { name:"Vidmate", ver:"v1.0", image:"attachment://0", cat:"Tools", type:"app", color:"#fdcb6e", url:"https://t.me/imangi996/652" },
+  { name:"Alight Motion", ver:"v1.0", image:"attachment://0", cat:"Video Editor", type:"app", color:"#e84393", url:"https://t.me/imangi996/651" },
+  { name:"Movie Box", ver:"v1.0", image:"attachment://0", cat:"Entertainment", type:"app", color:"#0984e3", url:"https://t.me/imangi996/648" },
+  { name:"Capcut without VPN", ver:"v1.0", image:"attachment://0", cat:"Video Editor", type:"app", color:"#00b894", url:"https://t.me/imangi996/646" },
+  { name:"Specialeffect", ver:"v1.0", image:"attachment://0", cat:"Video Editor", type:"app", color:"#fd79a8", url:"https://t.me/imangi996/645" },
+  { name:"Virbo AI Pro", ver:"v1.0", image:"attachment://0", cat:"AI Tools", type:"app", color:"#a29bfe", url:"https://t.me/imangi996/644" },
+  { name:"Subcap AI", ver:"v1.0", image:"attachment://0", cat:"AI Tools", type:"app", color:"#55a3ff", url:"https://t.me/imangi996/642" },
+  { name:"Hypic AI", ver:"v1.0", image:"attachment://0", cat:"AI Tools", type:"app", color:"#a8ff3e", url:"https://t.me/imangi996/643" },
+  { name:"Melolo", ver:"v1.0", image:"attachment://0", cat:"Music", type:"app", color:"#ffd000", url:"https://t.me/imangi996/627" },
+  { name:"Panda VPN", ver:"v1.0", image:"attachment://0", cat:"VPN", type:"app", color:"#2ed573", url:"https://t.me/imangi996/595" },
+  { name:"DramaBox", ver:"v1.0", image:"attachment://13", cat:"OTT Platform", type:"app", color:"#ff4757", url:"https://t.me/imangi996/587" },
+  { name:"HotminiDrama", ver:"v1.0", image:"attachment://14", cat:"OTT Platform", type:"app", color:"#ff7675", url:"https://t.me/imangi996/573" },
+  { name:"Trucaller", ver:"v1.0", image:"attachment://15", cat:"Communication", type:"app", color:"#0984e3", url:"https://t.me/imangi996/580" },
+  { name:"Picsart", ver:"v1.0", image:"attachment://16", cat:"Photo Editing", type:"app", color:"#6c5ce7", url:"https://t.me/imangi996/518" },
+  { name:"Utool AI", ver:"v1.0", image:"attachment://17", cat:"AI Tools", type:"app", color:"#00cec9", url:"https://t.me/imangi996/521" }
 ];
 
 let activeType = 'all';
@@ -483,7 +452,7 @@ function renderGrid() {
     card.innerHTML = `
       <div class="card-thumb" style="background:${d.color}22">
         <div class="bg-blur" style="background:${d.color}"></div>
-        <span style="position:relative;z-index:1;font-size:46px">${d.icon}</span>
+        <img src="${d.image}" alt="${d.name}">
         <div class="cat-label">${d.cat}</div>
       </div>
       <div class="card-body">
@@ -518,12 +487,8 @@ function doSearch() {
 function download(e, name, url) {
   e.stopPropagation();
   const t = document.getElementById('toast');
-  if (url && url !== 'https://example.com/' && !url.includes('example.com')) {
-    window.open(url, '_blank');
-    t.textContent = `✅ Download shuru ho gaya!`;
-  } else {
-    t.textContent = `⚠️ Download link abhi add nahi hua!`;
-  }
+  window.open(url, '_blank');
+  t.textContent = `✅ Download shuru ho gaya!`;
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2800);
 }
